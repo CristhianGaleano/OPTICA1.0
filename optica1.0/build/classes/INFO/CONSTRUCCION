@@ -1,0 +1,16 @@
+ESTA APLICACION ESTA SIENDO REALIZADA BAJO EL PATRON: MVC E OMPLEMENTANDO DAO
+
+EN EL COMPONENTE MODELO:
+Aqui ira toda la parte logica de la aplicacion como la conexion a la BD, manejo de datos con el patron DAO  "Objecto de Acceso a 
+Datos", es decir: si tenemos una tabla en nuestra BD, en nuestra aplicacion debemos crear dos clases, una clase de trasporte de
+datos o encapsulamiento y otra para el manejo de datos
+
+* La clase que sirve como encapsulamiento debe guardar relacion con su tabla en la BD, es decir si la tabla se llama persona
+la clase encapsuladora se llamara igual
+
+*EN EL COMPONENTE VISTA:
+Interaccion con el usuario, interfaz de nuestra aplicacion
+
+*EN EL COMPONENTE CONTROLADOR:
+Intermediario entre el modelo  y  vista
+responde a eventos e invoca peticiones al modelo    
