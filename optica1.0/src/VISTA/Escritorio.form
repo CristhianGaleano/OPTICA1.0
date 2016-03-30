@@ -45,11 +45,23 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMGestionarCita">
               <Properties>
-                <Property name="text" type="java.lang.String" value="GESTIOANR CITA"/>
+                <Property name="text" type="java.lang.String" value="ATENDER CITA"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMGestionarCitaActionPerformed"/>
               </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CAJA"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ABRIR"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -7,18 +7,21 @@ package CONTROLADOR;
 
 import MODELO.ColaCita.Cola;
 import MODELO.DAO.ClienteDAO;
+import MODELO.DAO.HistoriaDAO;
 import MODELO.Logica;
 import MODELO.VO.ClienteVO;
+import MODELO.VO.HistoriaVO;
 import VISTA.ClienteNuevo;
 import VISTA.ConsultarCliente;
 import VISTA.Escritorio;
 import VISTA.Login;
 import VISTA.AtenderCliente;
+import VISTA.FormularioHistoriaClinica;
+import VISTA.HistoriaClinica;
+import VISTA.OrdenServicio;
 import javax.swing.JDesktopPane;
 
-
-
-   public class Cordinador {
+public class Cordinador {
 
     private Escritorio vistaPrincipal;
     private Logica miLogica;
@@ -28,38 +31,63 @@ import javax.swing.JDesktopPane;
     private ConsultarCliente miConsultaCliente;
     private AtenderCliente miAtenderCliente;
     private Cola miCola;
- 
+    private HistoriaClinica miHistoria;
+    private JDesktopPane JDPEscritorio;
+    private OrdenServicio miOrden;
+    private FormularioHistoriaClinica miFormularioHistoria;
+    private HistoriaDAO miHistoriaDAO;
+    private ClienteVO ClienteVO;
 
-   void setMiConsultaCliente(ConsultarCliente miConsultaCliente) {
-        this.miConsultaCliente=miConsultaCliente;
+    public Cordinador(JDesktopPane JDPEscritorio) {
+        this.JDPEscritorio = JDPEscritorio;
     }
- 
-    
+
+    void setMiFormularioHistoria(FormularioHistoriaClinica miFormularioHistoria) {
+        this.miFormularioHistoria = miFormularioHistoria;
+    }
+
+    void setMiHistoriaDAO(HistoriaDAO miHistoriaDAO) {
+        this.miHistoriaDAO = miHistoriaDAO;
+    }
+
+    void setMiConsultaCliente(ConsultarCliente miConsultaCliente) {
+        this.miConsultaCliente = miConsultaCliente;
+    }
+
+    void setMiHistoriaClinica(HistoriaClinica miHistoria) {
+        this.miHistoria = miHistoria;
+    }
+
     void setVistaPrincipal(Escritorio vistaPrincipal) {
-        this.vistaPrincipal=vistaPrincipal;
+        this.vistaPrincipal = vistaPrincipal;
     }
 
     void setMiLogica(Logica miLogica) {
-        this.miLogica=miLogica;        
+        this.miLogica = miLogica;
     }
 
     void setInicio(Login login) {
-        this.login=login;
+        this.login = login;
     }
-    void setClienteNuevo(ClienteNuevo miClienteNuevo){
-        this.miNuevoCliente=miClienteNuevo;
+
+    void setClienteNuevo(ClienteNuevo miClienteNuevo) {
+        this.miNuevoCliente = miClienteNuevo;
+    }
+
+    void setMiOrden(OrdenServicio miOrden) {
+        this.miOrden = miOrden;
     }
 
     void setClienteDAO(ClienteDAO miClienteDAO) {
-        this.miClienteDAO=miClienteDAO;
+        this.miClienteDAO = miClienteDAO;
     }
-    
+
     void setMiAtenderCliente(AtenderCliente miAtenderCliente) {
-        this.miAtenderCliente=miAtenderCliente;
+        this.miAtenderCliente = miAtenderCliente;
     }
-    
+
     public String validarIngreso(int selectedIndex, String text) {
-       return miLogica.validarIngresos(selectedIndex,text);        
+        return miLogica.validarIngresos(selectedIndex, text);
     }
 
     public void cerrarVentana() {
@@ -75,50 +103,55 @@ import javax.swing.JDesktopPane;
     }
 
     public void cerrarVentanaClienteNuevo() {
-       miNuevoCliente.dispose();
+        miNuevoCliente.dispose();
     }
 
     public String registrarCliente(ClienteVO miClienteVO) {
         return miClienteDAO.registrarClienteNuevo(miClienteVO);
     }
 
-    
     void setMiNodo(Cola miCola) {
-        this.miCola=miCola;
-    }
-   
-    
-    public void iniciarConsultaCliente(JDesktopPane JDPEscritorio) {
-     JDPEscritorio.add(miConsultaCliente);
-     miConsultaCliente.setVisible(true);
+        this.miCola = miCola;
     }
 
-    public void iniciarVentanaClienteNuevo(JDesktopPane JDPEscritorio) {
-     JDPEscritorio.add(miNuevoCliente);
-     miNuevoCliente.setVisible(true);
+    public void iniciarConsultaCliente() {
+        JDPEscritorio.add(miConsultaCliente);
+        miConsultaCliente.setVisible(true);
     }
 
-    public void iniciarVentanaAreaCita(JDesktopPane JDPEscritorio) {
-       JDPEscritorio.add(miAtenderCliente);
-     miAtenderCliente.setVisible(true);
+    public void iniciarVentanaClienteNuevo() {
+        JDPEscritorio.add(miNuevoCliente);
+        miNuevoCliente.setVisible(true);
     }
-    
+
+    public void iniciarVentanaAreaCita() {
+        JDPEscritorio.add(miAtenderCliente);
+        miAtenderCliente.setVisible(true);
+    }
+
+    public void iniciarMostrarHistoriaClinica(ClienteVO miClienteVO) {
+        this.ClienteVO=miClienteVO;
+        miHistoria.datos(miClienteVO);
+        JDPEscritorio.add(miHistoria);
+        miHistoria.setVisible(true);
+    }
+
     public ClienteVO consultaCliente(String doc) {
         return miClienteDAO.consultaCliente(doc);
     }
 
     public void cerrarConsultaCliente() {
-       miConsultaCliente.dispose();
+        miConsultaCliente.dispose();
     }
 
     public boolean validarCliente(ClienteVO miClienteVo) {
-            System.out.printf("llego a validarcliente cordinador");
+
         return miLogica.validarCampos(miClienteVo);
     }
 
     public String actualizarDatos(ClienteVO miClienteVo) {
-            System.out.printf("llego a actualizardatosCordinador");
-    return miClienteDAO.actualizarDatos(miClienteVo);
+
+        return miClienteDAO.actualizarDatos(miClienteVo);
     }
 
     public String eliminarCliente(String doc) {
@@ -130,16 +163,15 @@ import javax.swing.JDesktopPane;
     }
 
     public void enviarCitaCola(String doc) {
-       miCola.insertar(doc);
+        miCola.insertar(doc);
     }
-    
 
     public String consultarCola() {
-       return miCola.quitar();
+        return miCola.quitar();
     }
 
     public String waitingLook() {
-       return miCola.inicioCola();
+        return miCola.inicioCola();
     }
 
     public int mostrarEnEspera() {
@@ -147,15 +179,45 @@ import javax.swing.JDesktopPane;
     }
 
     public void closeGestionarCliente() {
-       miAtenderCliente.dispose();
+        miAtenderCliente.dispose();
+    }
+
+    public void iniciarMiOrden() {
+        JDPEscritorio.add(miOrden);
+        miOrden.setVisible(true);
+    }
+
+    public Boolean historiaVacia(String Documento) {
+        return miLogica.validarHistoriaVacia(Documento);
+    }
+
+    public void showFormularioHistoriaClinica(ClienteVO miCLienteVO) {
+        this.ClienteVO=miCLienteVO;
+        miFormularioHistoria.datos(this.ClienteVO);
+        JDPEscritorio.add(miFormularioHistoria);
+        miFormularioHistoria.setVisible(true);
     }
 
     
-    
 
-    
-    
-    
-    
+    public void registrarHistoriaClinica(String docCliente, HistoriaVO miHistoriaVO) {
+        miHistoriaDAO.setRegistrarHistoriaClinica(docCliente,miHistoriaVO);
+    }
+
+    public Boolean validarHistoriaClinica(HistoriaVO miHistoriaVO) {
+        return miLogica.validarHistoriaClinica(miHistoriaVO);
+    }
+
+    public void closeFormularioHistoriaClinica() {
+        miFormularioHistoria.dispose();
+    }
+
+    public HistoriaVO consultarHistoriaClinica(String doc) {
+        return miHistoriaDAO.consultarHistoriaClinica(doc);
+    }
+
+    public void closeHistoriaClinica() {
+    miHistoria.dispose();
+    }
+
 }
-

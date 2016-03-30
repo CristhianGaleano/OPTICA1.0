@@ -6,7 +6,6 @@
 package MODELO.DAO;
 
 import CONTROLADOR.Cordinador;
-import MODELO.Conexion;
 import MODELO.VO.ClienteVO;
 import MODELO.conexion.conexion;
 import java.sql.Connection;
@@ -40,8 +39,9 @@ public class ClienteDAO {
         
         //sentencia SQL
         String SQL="INSERT INTO cliente (documentoCliente,nombresCliente,apellidosCliente,"
-                + "fechaNaciCliente,direccionCliente,telefonoCliente,observacionCliente) VALUES(?,?,?,?,?,?,?)";
-        
+                + "fechaNaciCliente,direccionCliente,telefonoCliente, "
+                + "email, lugarNaci,ocupacion, estadoCivil, escolaridad, lugarProcedencia, \n" +
+"genero, ESP, observacionCliente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         try {
             ps=connection.prepareStatement(SQL);
@@ -51,7 +51,17 @@ public class ClienteDAO {
             ps.setString(4, miClienteVO.getFechaNaci());
             ps.setString(5, miClienteVO.getDireccion());
             ps.setString(6, miClienteVO.getTelefono());
-            ps.setString(7, miClienteVO.getObservacion());
+            ps.setString(7, miClienteVO.getEmail());
+            ps.setString(8, miClienteVO.getLugarNaci());
+            ps.setString(9, miClienteVO.getOcupacion());
+            ps.setString(10, miClienteVO.getEstadoCivil());
+            ps.setString(11, miClienteVO.getEscolaridad());
+            ps.setString(12, miClienteVO.getLugarProcedencia());
+            ps.setString(13, miClienteVO.getGenero());
+            ps.setString(14, miClienteVO.getEPS());
+            ps.setString(15, miClienteVO.getObservacion());
+            
+            
             //ejecutamos este proceso
             ps.execute();
             
@@ -74,8 +84,10 @@ public class ClienteDAO {
          conexion miConexion = new conexion();
          
          conection=miConexion.getConection();
-         String SQL="SELECT documentoCliente,nombresCliente,apellidosCliente,fechaNaciCliente,direccionCliente,"
-                 + "telefonoCliente,observacionCliente FROM cliente WHERE documentoCliente=?";
+         String SQL="SELECT documentoCliente,nombresCliente,apellidosCliente,"
+                + "fechaNaciCliente,direccionCliente,telefonoCliente, "
+                + "email, lugarNaci,ocupacion, estadoCivil, escolaridad, lugarProcedencia, \n" +
+"genero, ESP, observacionCliente FROM cliente WHERE documentoCliente=?";
          
          
          try {
@@ -92,6 +104,14 @@ public class ClienteDAO {
                  miClienteVO.setFechaNaci(result.getString("fechaNaciCliente"));
                  miClienteVO.setDireccion(result.getString("direccionCliente"));
                  miClienteVO.setTelefono(result.getString("telefonoCliente"));
+                 miClienteVO.setEmail(result.getString("email"));
+                 miClienteVO.setLugarNaci(result.getString("lugarNaci"));
+                 miClienteVO.setOcupacion(result.getString("ocupacion"));
+                 miClienteVO.setEstadoCivil(result.getString("estadoCivil"));
+                 miClienteVO.setEscolaridad(result.getString("escolaridad"));
+                 miClienteVO.setLugarProcedencia(result.getString("lugarProcedencia"));
+                 miClienteVO.setGenero(result.getString("genero"));
+                 miClienteVO.setEPS(result.getString("ESP"));
                  miClienteVO.setObservacion(result.getString("observacionCliente"));
              }
 
@@ -115,9 +135,10 @@ public class ClienteDAO {
          conection=miConexion.getConection();
     
         try {
-            System.out.printf("llego a actualizar");
+            
             String SQL="UPDATE cliente SET documentoCliente=?, nombresCliente=?, apellidosCliente=?, fechaNaciCliente=?, direccionCliente=?,"
-                    + "telefonoCliente=?, observacionCliente=? WHERE documentoCliente='"+miClienteVo.getDocumento()+"'";
+                    + "telefonoCliente=?,email=?,lugarNaci=?,ocupacion=?,estadoCivil=?,escolaridad=?,lugarProcedencia=?,genero=?,ESP=?,"
+                    + " observacionCliente=? WHERE documentoCliente='"+miClienteVo.getDocumento()+"'";
             
             
     
@@ -129,7 +150,15 @@ public class ClienteDAO {
             ps.setString(4, miClienteVo.getFechaNaci());
             ps.setString(5, miClienteVo.getDireccion());
             ps.setString(6, miClienteVo.getTelefono());
-            ps.setString(7, miClienteVo.getObservacion());
+            ps.setString(7, miClienteVo.getEmail());
+            ps.setString(8, miClienteVo.getLugarNaci());
+            ps.setString(9, miClienteVo.getOcupacion());
+            ps.setString(10, miClienteVo.getEstadoCivil());
+            ps.setString(11, miClienteVo.getEscolaridad());
+            ps.setString(12, miClienteVo.getLugarProcedencia());
+            ps.setString(13, miClienteVo.getGenero());
+            ps.setString(14, miClienteVo.getEPS());
+            ps.setString(15, miClienteVo.getObservacion());
             
             ps.executeUpdate();
             

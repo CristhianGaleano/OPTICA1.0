@@ -8,6 +8,7 @@ package CONTROLADOR;
 import MODELO.ColaCita.Cola;
 import MODELO.ColaCita.NodoCola;
 import MODELO.DAO.ClienteDAO;
+import MODELO.DAO.HistoriaDAO;
 import MODELO.Logica;
 import VISTA.*;
 
@@ -23,13 +24,18 @@ public class Aplicacion {
         //a diferencia de una clase 'Persona' la cual podria instanciarse n veces
         Escritorio vistaPrincipal = new Escritorio();
         Login login = new Login(vistaPrincipal, true);
-        Cordinador miCordinador = new Cordinador();
+        Cordinador miCordinador = new Cordinador(vistaPrincipal.JDPEscritorio);
         Logica miLogica = new Logica();
         ClienteNuevo VistaNuevoCliente = new ClienteNuevo();
         ClienteDAO miClienteDAO = new ClienteDAO();
         ConsultarCliente miConsultaCliente = new ConsultarCliente();
         AtenderCliente miAtenderCliente = new AtenderCliente();
         Cola miCola = new Cola();
+        HistoriaClinica miHistoria = new HistoriaClinica();
+        OrdenServicio miOrden = new OrdenServicio();
+        FormularioHistoriaClinica miFormularioHistoriaClinica= new FormularioHistoriaClinica();
+        HistoriaDAO miHistoriaDAO = new HistoriaDAO();
+        
 
         //Relacionamos las clases con el Cordinador
         vistaPrincipal.setCordinador(miCordinador);//enviamos a la clase Worpace un objeto cordinador
@@ -40,6 +46,10 @@ public class Aplicacion {
         miConsultaCliente.setCordinador(miCordinador);
         miAtenderCliente.setCordinador(miCordinador);
         miCola.setCordinador(miCordinador);
+        miHistoria.setCordinador(miCordinador);
+        miOrden.setCordinador(miCordinador);
+        miFormularioHistoriaClinica.setCordinador(miCordinador);
+        miHistoriaDAO.setCordinador(miCordinador);
 
         //Ahora relacionamos el cordinador con las clases
         miCordinador.setVistaPrincipal(vistaPrincipal);
@@ -50,10 +60,15 @@ public class Aplicacion {
         miCordinador.setMiConsultaCliente(miConsultaCliente);
         miCordinador.setMiAtenderCliente(miAtenderCliente);
         miCordinador.setMiNodo(miCola);
+        miCordinador.setMiHistoriaClinica(miHistoria);
+        miCordinador.setMiOrden(miOrden);
+        miCordinador.setMiFormularioHistoria(miFormularioHistoriaClinica);
+        miCordinador.setMiHistoriaDAO(miHistoriaDAO);
+        
         login.setBounds(200, 100, 610, 420);
         login.setVisible(true);
         vistaPrincipal.setBounds(0, 0, 1360, 700);
         vistaPrincipal.setVisible(true);
-
+       
     }
 }

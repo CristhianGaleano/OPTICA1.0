@@ -8,6 +8,13 @@ package MODELO;
 import CONTROLADOR.Cordinador;
 import MODELO.ColaCita.Cola;
 import MODELO.VO.ClienteVO;
+import MODELO.VO.HistoriaVO;
+import MODELO.conexion.conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JTextField;
 
 /**
  *
@@ -43,14 +50,14 @@ public class Logica {
                 if(text.equals(PASS_ADMIN)){
                     retorno="administrador"; 
                 }else{
-                    retorno ="error";
+                    retorno ="error_contra";
                 }
                break;
             case ESPECIALISTA: 
                 if(text.equals(PASS_ESPECIALISTA)){
                     retorno="especialista";
                 }else{
-                    retorno ="error";
+                    retorno ="error_contra";
                 }
        
         }
@@ -59,7 +66,7 @@ public class Logica {
     
     //validar campos obligarorios
     public boolean validarCampos(ClienteVO miClienteVO){
-            System.out.printf("empezo a validar logica");
+            
         boolean docu;
         boolean nomb;
         boolean ape;
@@ -109,6 +116,94 @@ public class Logica {
         }
         
           
+    }
+
+    public Boolean validarHistoriaVacia(String Documento) {
+        boolean result=false;
+  
+        PreparedStatement ps;
+        ResultSet rs=null; 
+        conexion miConexion=new conexion();
+        Connection miConnection=null;
+        
+        miConnection=miConexion.getConection();
+        
+
+        String SQL="SELECT historiaClinica.cliente_idcliente,historiaClinica.cliente_documentoCliente FROM historiaClinica,cliente WHERE"
+                + " historiaClinica.cliente_idcliente=cliente.idcliente AND historiaClinica.cliente_documentoCliente="
+                + "cliente.documentoCliente AND cliente.documentoCliente='"+Documento+"'";
+        try {
+            System.out.println("Documento seteado: "+ Documento);
+            ps=miConnection.prepareStatement(SQL);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                result=false;
+            }
+            else{
+                result=true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+            
+        }
+        
+        
+        return result;
+    }
+
+    public Boolean validarHistoriaClinica(HistoriaVO miHistoriaVO) {
+        //Aqui debemos validar los campos obligatorios,campos obligatorios: 
+        //Alcolico, fumador, accidentes, fecha y examenFisico.
+        
+        Boolean alcolico,fumador,accidentes,fecha, examenFsico;
+        Boolean alco,fuma,acci;
+        String fechaH, examenF;
+        
+        alco=miHistoriaVO.getAlcoholico();
+        fuma=miHistoriaVO.getFumador();
+        acci=miHistoriaVO.getAccidentes();
+        fechaH=miHistoriaVO.getFechaHistoria();
+        examenF=miHistoriaVO.getExamenFisico();
+        
+        if(alco!=null && !alco.equals("")){
+            alcolico=true;
+        }else{
+            alcolico=false;
+        }
+        
+        if(fuma!=null && !fuma.equals("")){
+            fumador=true;
+        }else{
+            fumador=false;
+        }
+        
+        if(acci!=null && !acci.equals("")){
+            accidentes=true;
+        }else{
+            accidentes=false;
+        }
+        
+        if(fechaH!=null && !fechaH.equals("")){
+            fecha=true;
+        }else{
+            fecha=false;
+        }
+        
+        if(examenF!=null && !examenF.equals("")){
+            examenFsico=true;
+        }else{
+            examenFsico=false;
+        }
+        
+        
+        if(alcolico==true && fumador==true && accidentes && true && fecha==true && examenFsico==true){
+            return true;
+        }else{
+            return false;
+        }
+        
+        
+        
     }
 
     

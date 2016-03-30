@@ -21,7 +21,7 @@ private Cordinador miCordinador;
      */
     public ClienteNuevo() {
         initComponents();
-        setBounds(20, 10, 600, 500);
+        setBounds(20, 10, 900, 560);
         disable();
         jbCancelar.setEnabled(false);
         jbGuardar.setEnabled(false);
@@ -36,6 +36,15 @@ private Cordinador miCordinador;
         jtfFechaNac.setEnabled(false);
         jtfDireccion.setEnabled(false);
         jtfTelefono.setEnabled(false);
+        jtfEmail.setEnabled(false);
+        jtfEscolaridad.setEnabled(false);
+        jtfLugarNaci.setEnabled(false);
+        jtfOcupacion.setEnabled(false);
+        jtfEPS.setEnabled(false);
+        jtfEscolaridad.setEnabled(false);
+        jcbEstadoCivil.setEnabled(false);
+        jcbGenero.setEnabled(false);
+        jcbLugarProcedencia.setEnabled(false);
         jtaObservacion.setEnabled(false);
         jbCancelar.setEnabled(false);
         jbGuardar.setEnabled(false);
@@ -50,6 +59,14 @@ private Cordinador miCordinador;
         jtfFechaNac.setEnabled(true);
         jtfDireccion.setEnabled(true);
         jtfTelefono.setEnabled(true);
+         jtfEmail.setEnabled(true);
+        jtfEscolaridad.setEnabled(true);
+        jtfLugarNaci.setEnabled(true);
+        jtfOcupacion.setEnabled(true);
+        jtfEPS.setEnabled(true);
+        jcbEstadoCivil.setEnabled(true);
+        jcbGenero.setEnabled(true);
+        jcbLugarProcedencia.setEnabled(true);
         jtaObservacion.setEnabled(true);
         jbGuardar.setEnabled(true);
         jbCancelar.setEnabled(true);
@@ -59,11 +76,16 @@ private Cordinador miCordinador;
     
     void resetear(){
         jtfDocumento.setText("");
-        jtfNombres.setText("");
+        jtfLugarNaci.setText("");
         jtfApellidos.setText("");
         jtfFechaNac.setText("");
-        jtfDireccion.setText("");
+        jtfOcupacion.setText("");
         jtfTelefono.setText("");
+        jtfEmail.setText("");
+        jtfEscolaridad.setText("");
+        jtfLugarNaci.setText("");
+        jtfOcupacion.setText("");
+        jtfEPS.setText("");
         jtaObservacion.setText("");
       
     }
@@ -75,6 +97,11 @@ private Cordinador miCordinador;
         jtfFechaNac.setText("Fecha nacimiento");
         jtfDireccion.setText("Direcciòn");
         jtfTelefono.setText("Telefono");
+         jtfEmail.setText("Email");
+        jtfEscolaridad.setText("Escolaridad");
+        jtfLugarNaci.setText("Lugar de nacimiento");
+        jtfOcupacion.setText("Ocupacion");
+        jtfEPS.setText("EPS");
         jtaObservacion.setText("Observaciòn");
     }
     /**
@@ -90,18 +117,26 @@ private Cordinador miCordinador;
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jtfDireccion = new javax.swing.JTextField();
+        jtfOcupacion = new javax.swing.JTextField();
         jtfTelefono = new javax.swing.JTextField();
         jtfFechaNac = new javax.swing.JTextField();
         jtfDocumento = new javax.swing.JTextField();
         jtfApellidos = new javax.swing.JTextField();
-        jtfNombres = new javax.swing.JTextField();
+        jtfLugarNaci = new javax.swing.JTextField();
         jbCancelar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbNuevo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaObservacion = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
+        jtfNombres = new javax.swing.JTextField();
+        jtfEscolaridad = new javax.swing.JTextField();
+        jcbLugarProcedencia = new javax.swing.JComboBox<>();
+        jcbEstadoCivil = new javax.swing.JComboBox<>();
+        jtfDireccion = new javax.swing.JTextField();
+        jcbGenero = new javax.swing.JComboBox<>();
+        jtfEmail = new javax.swing.JTextField();
+        jtfEPS = new javax.swing.JTextField();
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setIconifiable(true);
@@ -118,30 +153,30 @@ private Cordinador miCordinador;
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NEW CLIENT");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(106, 31, 258, 43);
+        jLabel1.setBounds(180, 30, 258, 43);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(60, 8, 470, 100);
+        jPanel2.setBounds(60, 8, 700, 100);
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("FORMULARIO"));
         jPanel3.setForeground(new java.awt.Color(153, 153, 255));
         jPanel3.setLayout(null);
 
-        jtfDireccion.setBackground(new java.awt.Color(204, 204, 255));
-        jtfDireccion.setText("DIRECCION");
-        jtfDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtfOcupacion.setBackground(new java.awt.Color(204, 204, 255));
+        jtfOcupacion.setText("OCUPACION");
+        jtfOcupacion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jtfDireccionFocusGained(evt);
+                jtfOcupacionFocusGained(evt);
             }
         });
-        jtfDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtfOcupacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtfDireccionKeyPressed(evt);
+                jtfOcupacionKeyPressed(evt);
             }
         });
-        jPanel3.add(jtfDireccion);
-        jtfDireccion.setBounds(230, 130, 140, 19);
+        jPanel3.add(jtfOcupacion);
+        jtfOcupacion.setBounds(360, 130, 140, 19);
 
         jtfTelefono.setBackground(new java.awt.Color(204, 204, 255));
         jtfTelefono.setText("TELEFONO");
@@ -171,7 +206,7 @@ private Cordinador miCordinador;
             }
         });
         jPanel3.add(jtfFechaNac);
-        jtfFechaNac.setBounds(230, 90, 140, 19);
+        jtfFechaNac.setBounds(190, 90, 140, 19);
 
         jtfDocumento.setBackground(new java.awt.Color(204, 204, 255));
         jtfDocumento.setText("DOCUMENTO");
@@ -201,7 +236,73 @@ private Cordinador miCordinador;
             }
         });
         jPanel3.add(jtfApellidos);
-        jtfApellidos.setBounds(20, 90, 140, 19);
+        jtfApellidos.setBounds(360, 50, 140, 19);
+
+        jtfLugarNaci.setBackground(new java.awt.Color(204, 204, 255));
+        jtfLugarNaci.setText("LUGAR NACIMIENTO");
+        jtfLugarNaci.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfLugarNaciFocusGained(evt);
+            }
+        });
+        jtfLugarNaci.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfLugarNaciKeyPressed(evt);
+            }
+        });
+        jPanel3.add(jtfLugarNaci);
+        jtfLugarNaci.setBounds(360, 90, 140, 20);
+
+        jbCancelar.setText("CANCELAR");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jbCancelar);
+        jbCancelar.setBounds(420, 240, 105, 40);
+
+        jbGuardar.setText("GUARDAR");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jbGuardar);
+        jbGuardar.setBounds(290, 240, 100, 40);
+
+        jbNuevo.setText("NUEVO");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jbNuevo);
+        jbNuevo.setBounds(180, 240, 82, 40);
+
+        jtaObservacion.setBackground(new java.awt.Color(204, 204, 255));
+        jtaObservacion.setColumns(20);
+        jtaObservacion.setRows(5);
+        jtaObservacion.setText("Observacion del cliente");
+        jtaObservacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtaObservacionFocusGained(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtaObservacion);
+
+        jPanel3.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 160, 310, 70);
+
+        jButton3.setText("CERRAR");
+        jButton3.setAutoscrolls(true);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3);
+        jButton3.setBounds(560, 240, 87, 40);
 
         jtfNombres.setBackground(new java.awt.Color(204, 204, 255));
         jtfNombres.setText("NOMBRES");
@@ -216,65 +317,85 @@ private Cordinador miCordinador;
             }
         });
         jPanel3.add(jtfNombres);
-        jtfNombres.setBounds(230, 50, 140, 20);
+        jtfNombres.setBounds(190, 50, 140, 20);
 
-        jbCancelar.setText("CANCELAR");
-        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCancelarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jbCancelar);
-        jbCancelar.setBounds(230, 260, 105, 25);
-
-        jbGuardar.setAction(jbGuardar.getAction());
-        jbGuardar.setText("GUARDAR");
-        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGuardarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jbGuardar);
-        jbGuardar.setBounds(30, 260, 100, 30);
-
-        jbNuevo.setText("NUEVO");
-        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNuevoActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jbNuevo);
-        jbNuevo.setBounds(140, 260, 82, 25);
-
-        jtaObservacion.setBackground(new java.awt.Color(204, 204, 255));
-        jtaObservacion.setColumns(20);
-        jtaObservacion.setRows(5);
-        jtaObservacion.setText("Observacion del cliente");
-        jtaObservacion.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtfEscolaridad.setBackground(new java.awt.Color(204, 204, 255));
+        jtfEscolaridad.setText("ESCOLARIDAD");
+        jtfEscolaridad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jtaObservacionFocusGained(evt);
+                jtfEscolaridadFocusGained(evt);
             }
         });
-        jScrollPane1.setViewportView(jtaObservacion);
-
-        jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 160, 260, 80);
-
-        jButton3.setText("CERRAR");
-        jButton3.setAutoscrolls(true);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        jtfEscolaridad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfEscolaridadKeyPressed(evt);
             }
         });
-        jPanel3.add(jButton3);
-        jButton3.setBounds(350, 260, 87, 25);
+        jPanel3.add(jtfEscolaridad);
+        jtfEscolaridad.setBounds(190, 130, 140, 20);
+
+        jcbLugarProcedencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PROCEDENCIA", "Cundinamarca", "Risaralda", "Quindio", "Caldas", " " }));
+        jPanel3.add(jcbLugarProcedencia);
+        jcbLugarProcedencia.setBounds(540, 90, 129, 24);
+
+        jcbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado civil", "Soltero", "Casado", "Viudo", " " }));
+        jPanel3.add(jcbEstadoCivil);
+        jcbEstadoCivil.setBounds(540, 130, 107, 24);
+
+        jtfDireccion.setBackground(new java.awt.Color(204, 204, 255));
+        jtfDireccion.setText("DIRECCION");
+        jtfDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfDireccionFocusGained(evt);
+            }
+        });
+        jtfDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfDireccionKeyPressed(evt);
+            }
+        });
+        jPanel3.add(jtfDireccion);
+        jtfDireccion.setBounds(540, 50, 140, 19);
+
+        jcbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Genero", "Masculino", "Femenino" }));
+        jPanel3.add(jcbGenero);
+        jcbGenero.setBounds(540, 170, 110, 24);
+
+        jtfEmail.setBackground(new java.awt.Color(204, 204, 255));
+        jtfEmail.setText("E-MAIL");
+        jtfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfEmailFocusGained(evt);
+            }
+        });
+        jtfEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfEmailKeyPressed(evt);
+            }
+        });
+        jPanel3.add(jtfEmail);
+        jtfEmail.setBounds(20, 90, 140, 20);
+
+        jtfEPS.setBackground(new java.awt.Color(204, 204, 255));
+        jtfEPS.setText("EPS");
+        jtfEPS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfEPSFocusGained(evt);
+            }
+        });
+        jtfEPS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfEPSKeyPressed(evt);
+            }
+        });
+        jPanel3.add(jtfEPS);
+        jtfEPS.setBounds(360, 170, 140, 20);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(60, 120, 460, 320);
+        jPanel3.setBounds(60, 120, 700, 320);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 580, 450);
+        jPanel1.setBounds(0, 0, 780, 450);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,10 +405,10 @@ private Cordinador miCordinador;
         
     }//GEN-LAST:event_jtfDocumentoKeyPressed
 
-    private void jtfNombresKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombresKeyPressed
+    private void jtfLugarNaciKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfLugarNaciKeyPressed
         // TODO add your handling code here:
        
-    }//GEN-LAST:event_jtfNombresKeyPressed
+    }//GEN-LAST:event_jtfLugarNaciKeyPressed
 
     private void jtfApellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidosKeyPressed
         // TODO add your handling code here:
@@ -304,10 +425,10 @@ private Cordinador miCordinador;
        
     }//GEN-LAST:event_jtfTelefonoKeyPressed
 
-    private void jtfDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDireccionKeyPressed
+    private void jtfOcupacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfOcupacionKeyPressed
         // TODO add your handling code here:
        
-    }//GEN-LAST:event_jtfDireccionKeyPressed
+    }//GEN-LAST:event_jtfOcupacionKeyPressed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
@@ -320,10 +441,10 @@ private Cordinador miCordinador;
         jtfDocumento.setText("");
     }//GEN-LAST:event_jtfDocumentoFocusGained
 
-    private void jtfNombresFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNombresFocusGained
+    private void jtfLugarNaciFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLugarNaciFocusGained
         // TODO add your handling code here:
-       jtfNombres.setText("");
-    }//GEN-LAST:event_jtfNombresFocusGained
+       jtfLugarNaci.setText("");
+    }//GEN-LAST:event_jtfLugarNaciFocusGained
 
     private void jtfApellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfApellidosFocusGained
         // TODO add your handling code here:
@@ -340,10 +461,10 @@ private Cordinador miCordinador;
         jtfTelefono.setText("");
     }//GEN-LAST:event_jtfTelefonoFocusGained
 
-    private void jtfDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDireccionFocusGained
+    private void jtfOcupacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfOcupacionFocusGained
         // TODO add your handling code here:
-        jtfDireccion.setText("");
-    }//GEN-LAST:event_jtfDireccionFocusGained
+        jtfOcupacion.setText("");
+    }//GEN-LAST:event_jtfOcupacionFocusGained
 
     private void jtaObservacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtaObservacionFocusGained
         // TODO add your handling code here:
@@ -370,6 +491,46 @@ private Cordinador miCordinador;
         disable();
     }//GEN-LAST:event_jbGuardarActionPerformed
 
+    private void jtfNombresFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNombresFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNombresFocusGained
+
+    private void jtfNombresKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombresKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfNombresKeyPressed
+
+    private void jtfEscolaridadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEscolaridadFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEscolaridadFocusGained
+
+    private void jtfEscolaridadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEscolaridadKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEscolaridadKeyPressed
+
+    private void jtfDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDireccionFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDireccionFocusGained
+
+    private void jtfDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDireccionKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDireccionKeyPressed
+
+    private void jtfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEmailFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEmailFocusGained
+
+    private void jtfEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEmailKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEmailKeyPressed
+
+    private void jtfEPSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEPSFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEPSFocusGained
+
+    private void jtfEPSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEPSKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEPSKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
@@ -381,12 +542,20 @@ private Cordinador miCordinador;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbNuevo;
+    private javax.swing.JComboBox<String> jcbEstadoCivil;
+    private javax.swing.JComboBox<String> jcbGenero;
+    private javax.swing.JComboBox<String> jcbLugarProcedencia;
     private javax.swing.JTextArea jtaObservacion;
     private javax.swing.JTextField jtfApellidos;
     private javax.swing.JTextField jtfDireccion;
     private javax.swing.JTextField jtfDocumento;
+    private javax.swing.JTextField jtfEPS;
+    private javax.swing.JTextField jtfEmail;
+    private javax.swing.JTextField jtfEscolaridad;
     private javax.swing.JTextField jtfFechaNac;
+    private javax.swing.JTextField jtfLugarNaci;
     private javax.swing.JTextField jtfNombres;
+    private javax.swing.JTextField jtfOcupacion;
     private javax.swing.JTextField jtfTelefono;
     // End of variables declaration//GEN-END:variables
 
@@ -402,7 +571,17 @@ private Cordinador miCordinador;
        miClienteVO.setFechaNaci(jtfFechaNac.getText());
        miClienteVO.setDireccion(jtfDireccion.getText());
        miClienteVO.setTelefono(jtfTelefono.getText());
+       miClienteVO.setEmail(jtfEmail.getText());
+       miClienteVO.setLugarNaci(jtfLugarNaci.getText());
+       miClienteVO.setOcupacion(jtfOcupacion.getText());
+       miClienteVO.setEstadoCivil(jcbEstadoCivil.getSelectedItem().toString());
+       miClienteVO.setEscolaridad(jtfEscolaridad.getText());
+       miClienteVO.setLugarProcedencia(jcbLugarProcedencia.getSelectedItem().toString());
+       miClienteVO.setGenero(jcbGenero.getSelectedItem().toString());
+       miClienteVO.setEPS(jtfEPS.getText());
        miClienteVO.setObservacion(jtaObservacion.getText());
+       
+       
        
         String retorno;
     retorno = miCordinador.registrarCliente(miClienteVO);

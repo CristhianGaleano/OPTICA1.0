@@ -33,7 +33,7 @@ public class conexion {
         //ahora le indicamos que obtenga la conexion
         conexion=DriverManager.getConnection(url,user,password);
         if(conexion!=null){
-            System.out.print("Conexion a la BD: " + nameBD + " exitosa");
+            System.out.println("Conexion a la BD: " + nameBD + " exitosa");
         }
         
             

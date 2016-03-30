@@ -152,7 +152,10 @@ public class Login extends javax.swing.JDialog {
         String result = miCordinador.validarIngreso(jcbPerfil.getSelectedIndex(), jpfPassword.getText());
         if(result.equals("error")){
             JOptionPane.showMessageDialog(null, "No ha seleccionado un usuario");
+        }else if(result.equals("error_contra")){
+            JOptionPane.showMessageDialog(null, "Revise la contraseña ingresada!");
         }else{
+            
         JOptionPane.showMessageDialog(null, result);
         jlUserBienvenida.setText(result);
         miCordinador.asignarPrivilegios(result);

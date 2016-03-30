@@ -7,10 +7,12 @@ package VISTA;
 
 import CONTROLADOR.Cordinador;
 import MODELO.Reloj;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.util.GregorianCalendar;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -31,6 +33,11 @@ public class Escritorio extends javax.swing.JFrame {
         Reloj reloj = new Reloj(jlHora);
         reloj.start();
         miFecha();
+        try {
+            setIconImage(new ImageIcon (getClass().getResource("/IMG/icono.png")).getImage());
+        } catch (Exception e) {
+        }
+        
         cararImagen(JDPEscritorio, image1);
     }
     
@@ -96,6 +103,8 @@ public class Escritorio extends javax.swing.JFrame {
         jmiConsultarCliente = new javax.swing.JMenuItem();
         jmAtencion = new javax.swing.JMenu();
         JMGestionarCita = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jbCerrar = new javax.swing.JMenuItem();
@@ -158,7 +167,7 @@ public class Escritorio extends javax.swing.JFrame {
 
         jmAtencion.setText("ATENCION");
 
-        JMGestionarCita.setText("GESTIOANR CITA");
+        JMGestionarCita.setText("ATENDER CITA");
         JMGestionarCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMGestionarCitaActionPerformed(evt);
@@ -167,6 +176,13 @@ public class Escritorio extends javax.swing.JFrame {
         jmAtencion.add(JMGestionarCita);
 
         jMenuBar1.add(jmAtencion);
+
+        jMenu5.setText("CAJA");
+
+        jMenuItem9.setText("ABRIR");
+        jMenu5.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu5);
 
         jMenu1.setText("OPCIONES");
 
@@ -209,7 +225,7 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void jmiAltaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAltaClienteActionPerformed
         // TODO add your handling code here:
-       miCordinador.iniciarVentanaClienteNuevo(JDPEscritorio );
+       miCordinador.iniciarVentanaClienteNuevo();
       
     }//GEN-LAST:event_jmiAltaClienteActionPerformed
 
@@ -219,7 +235,7 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmiConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultarClienteActionPerformed
-         miCordinador.iniciarConsultaCliente(JDPEscritorio);
+         miCordinador.iniciarConsultaCliente();
     }//GEN-LAST:event_jmiConsultarClienteActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -232,7 +248,7 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void JMGestionarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGestionarCitaActionPerformed
         // TODO add your handling code here:
-        miCordinador.iniciarVentanaAreaCita(JDPEscritorio );
+        miCordinador.iniciarVentanaAreaCita( );
     }//GEN-LAST:event_JMGestionarCitaActionPerformed
 
     
@@ -244,10 +260,12 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jbCerrar;
     private javax.swing.JLabel jlFecha;
     private javax.swing.JLabel jlHora;
